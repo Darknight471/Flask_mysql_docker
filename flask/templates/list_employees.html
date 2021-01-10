@@ -1,0 +1,35 @@
+<!DOCTYPE html>  
+<html lang = "en">  
+   <head><title>Home</title></head>  
+   <body>  
+      <h3>  
+         <a href = "{{ url_for('list_employees') }}">Employee Management System</a>  
+      </h3>  
+        
+      <hr/>  
+      {%- for message in get_flashed_messages() %}  
+         {{ message }}  
+      {%- endfor %}  
+          
+      <h3>Employees List</h3>  
+      <table border="2" padding = "5">  
+         <thead>  
+            <tr> 
+               <th>Employee ID</th> 
+               <th>Employee name</th>
+            </tr>  
+         </thead>  
+  
+         <tbody>  
+            {% for employee in Employees %}  
+               <tr> 
+                  <td>{{ employee.id }}</td> 
+                  <td>{{ employee.name }}</td>
+               </tr>  
+            {% endfor %}  
+         </tbody>  
+      </table>  
+      <br><br>  
+      <a href="{{ url_for('addEmployee') }}">Add New Employee</a>  
+   </body>  
+</html>
